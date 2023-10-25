@@ -1,0 +1,25 @@
+nvm para cambiar la vercion
+
+
+index.html => donde se va a mostrar la aplicion (id)
+index.js => entry point (donde se montar)
+app.js => entry point (codigo a mostar)
+
+npx create-react-app [name]
+
+
+
+npm start 
+npm rum build
+
+
+npm i react-bootstrap
+
+tsrafc
+
+
+npm run test  (correr test) agrear en package.json [--coverage]  "test": "react-scripts test --coverage",ç
+_______________________________
+memo() => componentes
+useCallBack => Funciones
+useMemo() => obj
