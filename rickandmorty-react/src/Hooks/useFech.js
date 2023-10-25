@@ -1,20 +1,23 @@
 
-import {useCallback, useEffect,useState} from "react"
-//import { axios  } from "axios";
-import {API} from "../API"
+import {useCallback, useEffect,useReducer,useState} from "react"
 
-export const  useFech =(endpoint ="character")=> { //useFech("character")
-    const [loading,setLoading] = useState(true)
-    const [data,setData] = useState({})
-    const [error,setError] = useState(false)
+import {API} from "../API"
+import { fechReducer, initialState } from "../reducers/fech"
+import { ACTIONS } from "../Acion/Fech"
+
+export const  useFech =(endpoint ="character")=> { 
+
+    const [state,dispach] = useReducer(fechReducer,initialState)
     const getData =  useCallback(async ()=>{
         try{
             const {data} = await API.get(`${endpoint}`) //data : {} STATUS:...
-            setData(data)
-            setLoading(false)
+            dispach({type:ACTIONS.SET_DATA , payload: data})
+            console.log(data)
+
+
         } catch (e) {
             console.error(e)
-            setError(true)
+            dispach({type:ACTIONS.SET_ERROR})
         }
     },[endpoint])
 
@@ -22,5 +25,5 @@ export const  useFech =(endpoint ="character")=> { //useFech("character")
         getData()
     },[endpoint,getData])
 
-    return [data,loading,error]
+    return state
 }

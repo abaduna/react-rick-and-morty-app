@@ -1,18 +1,18 @@
 import  {Card,Button} from "react-bootstrap"
 import PropTypes from "prop-types"
-const Character = ({character}) => {
+const Character = ({id,name,image,status,species,created}) => {
+
   return (
     <>
 
-<Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src="holder.js/100px180" />
+<Card style={{ width: '18rem' }} className="charcter_separation" key={id}>
+    <Card.Img variant="top" src={image} />
     <Card.Body>
-    <Card.Title>Card Title</Card.Title>
+    <Card.Title>{name}</Card.Title>
     <Card.Text>
-        Some quick example text to build on the card title and make up the
-        bulk of the card's content.
+       Especie : {species}  <br/> esta vivo: {status} <br/> fue creado {created}
     </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
+    <Button variant="primary">Go {id} </Button>
     </Card.Body>
 </Card>    
     </>
